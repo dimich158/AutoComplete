@@ -1,0 +1,4 @@
+<input type="text" (keyup)="getSuggestions($event)" id="city" list="cityList" [(ngModel)]="inputValue" />
+<datalist id="cityList">
+    <option *ngFor="let item of suggestions" [value]="item.cityName">{{item.cityName}}</option>
+</datalist>

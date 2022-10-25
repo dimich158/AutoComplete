@@ -1,3 +1,4 @@
+using AutoComplete.BL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +27,8 @@ namespace AutoComplete
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+            services.AddScoped<IDBContext, SqlServerDBContext>();
+            services.AddScoped<IAutoCompleteDataReprository, AutoCompleteDataReprository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
