@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CitiesDataService } from '../cities-data.service';
 import { ICityDTO } from '../city-dto';
 
@@ -9,9 +9,10 @@ import { ICityDTO } from '../city-dto';
 })
 export class AutocompleteComponent implements OnInit {
 
-    suggestions: ICityDTO[];
-    inputValue: string;
-    prevValue: string;
+    @Input() public minLength: number = 2;
+    public suggestions: ICityDTO[];
+    public inputValue: string;
+    public prevValue: string;
 
     constructor(private svc: CitiesDataService) { }
 
@@ -19,13 +20,22 @@ export class AutocompleteComponent implements OnInit {
     }
 
     getSuggestions(x) {
-        if (this.prevValue != this.inputValue) {
-            this.svc.getCities(this.inputValue).subscribe({
-                next: d => this.suggestions = d,
-                error: e => console.error(e)
-            })
-            this.prevValue = this.inputValue;
+        if (this.prevValue != x.target.value) {
+            if (x.target.value.length >= this.minLength) {
+                this.svc.getCities(x.target.value).subscribe({
+                    next: d => this.suggestions = d,
+                    error: e => console.error(e)
+                })
+            }
+            else {
+                this.suggestions = [];
+            }
+            this.prevValue = x.target.value;
         }
+    }
+
+    test($event) {
+        alert($event.target);
     }
 
 }

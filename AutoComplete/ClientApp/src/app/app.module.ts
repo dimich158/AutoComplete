@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { AutocompleteComponent } from './autocomplete/autocomplete.component';
+import { Autocomplete2Component } from './autocomplete2/autocomplete2.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AutocompleteComponent } from './autocomplete/autocomplete.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    AutocompleteComponent
+    AutocompleteComponent,
+    Autocomplete2Component
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

@@ -1,5 +1,5 @@
 ﻿export interface ICityDTO {
     
-    CityName: string;
-    
+    cityName: string;
+    isActive: boolean;
 }

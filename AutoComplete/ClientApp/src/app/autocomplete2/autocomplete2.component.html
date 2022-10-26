@@ -1,0 +1,6 @@
+<div class="autocomplete" style="width:300px;">
+    <input id="myInput" type="text" name="myCity" placeholder="City" [(ngModel)]="inputValue" (input)="getSuggestions($event.target.value)" (keydown)="onKeyDownSuggestions($event)">
+    <div *ngIf="suggestions && isShowSugg" id="myInputautocomplete-list" class="autocomplete-items">
+        <div *ngFor='let s of suggestions' (click)="setInputValue(s.cityName)" [class.autocomplete-active]="s.isActive">{{s.cityName}}</div>
+    </div>
+</div>
