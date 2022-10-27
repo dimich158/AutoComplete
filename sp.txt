@@ -1,0 +1,31 @@
+﻿USE [myDB]
+GO
+/****** Object:  StoredProcedure [dbo].[AUTO_COMP_DATA_GET_PRO]    Script Date: 26/10/2022 12:00:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Name
+-- Create date: 
+-- Description:	
+-- =============================================
+ALTER PROCEDURE [dbo].[AUTO_COMP_DATA_GET_PRO] 
+	-- Add the parameters for the stored procedure here
+	@search nvarchar(255)
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	SELECT TOP 500
+		CityName
+	FROM
+		dbo.Cities
+	WHERE
+		CityName like @search + '%'
+	ORDER BY 
+		CityName
+END
